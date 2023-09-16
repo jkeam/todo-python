@@ -8,14 +8,9 @@ metadata:
     app.kubernetes.io/name: todo-python
     app.kubernetes.io/part-of: todo
     app.openshift.io/runtime: python
-    discovery.3scale.net: 'true'
   annotations:
     app.openshift.io/vcs-uri: 'https://github.com/jkeam/todo-python.git'
     app.openshift.io/vcs-ref: 'main'
-    discovery.3scale.net/scheme: 'https'
-    discovery.3scale.net/port: '8080'
-    discovery.3scale.net/path: '/'
-    discovery.3scale.net/description-path: '/openapi.json'
   name: todo-python
   namespace: todo
 spec:
