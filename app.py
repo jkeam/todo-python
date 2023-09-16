@@ -1,22 +1,19 @@
-from flask import Flask, jsonify
-from os import environ
-from requests import get
+from fastapi import FastAPI
+import requests
 
-app = Flask(__name__)
-ROOT_URL = 'https://jsonplaceholder.typicode.com/todos'
+app = FastAPI()
+ROOT_URL = "https://jsonplaceholder.typicode.com/todos"
 
-@app.route('/health')
-def health():
-    return jsonify({'message': 'healthy'})
+@app.get("/health")
+def health() -> dict:
+    return {"message": "healthy"}
 
-@app.route('/')
-def todos():
-    return jsonify(get(ROOT_URL).json())
+@app.get("/todos")
+def todos() -> dict:
+    res = requests.get(ROOT_URL).json()
+    return res
 
-@app.route('/<id>')
-def todo(id):
-    return jsonify(get(f"{ROOT_URL}/{id}").json())
-
-if __name__ == '__main__':
-   port = environ.get('PORT', 8080)
-   app.run(debug=True, host='0.0.0.0', port=int(port))
+@app.get("/todos/{todo_id}")
+def todo(todo_id: int) -> dict:
+    res = requests.get(f"{ROOT_URL}/{todo_id}").json()
+    return res

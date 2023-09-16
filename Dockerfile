@@ -10,16 +10,9 @@ RUN dnf -y install httpd
 WORKDIR $APP_ROOT
 COPY . ./
 
-# Default env vars
-ENV PORT 8080
-
 # Install production dependencies
 RUN python3 -m pip install --upgrade pip
 RUN pip install -r ./requirements.txt
 USER 1001
 
-# Run the web service on container startup. Here we use the gunicorn
-# webserver, with one worker process and 8 threads.
-# For environments with multiple CPU cores, increase the number of workers
-# to be equal to the cores available.
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
