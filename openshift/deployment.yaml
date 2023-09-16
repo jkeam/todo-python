@@ -20,7 +20,7 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
-      - image: quay.io/jkeam/todo-python
+      - image: 'quay.io/jkeam/todo-python@sha256:b42224282d5a0cc2214bc093799139ff20f010d22ba2838364ce41d9882be812'
         name: todo-python
         resources:
           requests:
