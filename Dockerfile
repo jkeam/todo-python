@@ -6,13 +6,15 @@ ENV PYTHONUNBUFFERED True
 USER root
 RUN dnf -y install httpd
 
-# Copy local code to the container image
 WORKDIR $APP_ROOT
-COPY . ./
 
 # Install production dependencies
 RUN python3 -m pip install --upgrade pip
+COPY requirements.txt ./
 RUN pip install -r ./requirements.txt
 USER 1001
+
+# Copy app
+COPY . ./
 
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
