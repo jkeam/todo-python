@@ -8,14 +8,14 @@ metadata:
     app.kubernetes.io/name: todo-python
     app.kubernetes.io/part-of: todo
     app.openshift.io/runtime: python
-    discovery.3scale.net: true
+    discovery.3scale.net: 'true'
   annotations:
-    app.openshift.io/vcs-uri: https://github.com/jkeam/todo-python.git
-    app.openshift.io/vcs-ref: main
-    discovery.3scale.net/scheme: https
-    discovery.3scale.net/port: 8080
-    discovery.3scale.net/path: /
-    discovery.3scale.net/description-path: /openapi.json
+    app.openshift.io/vcs-uri: 'https://github.com/jkeam/todo-python.git'
+    app.openshift.io/vcs-ref: 'main'
+    discovery.3scale.net/scheme: 'https'
+    discovery.3scale.net/port: '8080'
+    discovery.3scale.net/path: '/'
+    discovery.3scale.net/description-path: '/openapi.json'
   name: todo-python
   namespace: todo
 spec:
@@ -33,7 +33,7 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
-      - image: 'quay.io/jkeam/todo-python@sha256:82044e3f83364c1e61bfc81a03929511387e2d5101f9fb233045184668ea691b'
+      - image: 'quay.io/jkeam/todo-python@sha256:c546b32d9c5963380fc2282c00f35d1a7109fa539d42d2c6cea67e2fa745001f'
         name: todo-python
         resources:
           requests:
