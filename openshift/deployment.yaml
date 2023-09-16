@@ -3,6 +3,14 @@ kind: Deployment
 metadata:
   labels:
     app: todo-python
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/instance: todo-python-single
+    app.kubernetes.io/name: todo-python
+    app.kubernetes.io/part-of: todo
+    app.openshift.io/runtime: python
+  annotations:
+    app.openshift.io/vcs-uri: https://github.com/jkeam/todo-python.git
+    app.openshift.io/vcs-ref: main
   name: todo-python
   namespace: todo
 spec:
