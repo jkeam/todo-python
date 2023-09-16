@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: todo-python
+  name: todo-python-route
+  namespace: todo
+spec:
+  port:
+    targetPort: service-port
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: todo-python
