@@ -2,8 +2,10 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 import requests
 
-app = FastAPI()
 ROOT_URL = "https://jsonplaceholder.typicode.com/todos"
+OPENAPI_VERSION = "3.0.2"
+app = FastAPI()
+app.openapi_version = OPENAPI_VERSION
 
 @app.get("/health")
 def health() -> dict:
@@ -20,9 +22,11 @@ def todo(todo_id: int) -> dict:
     return {"data": res}
 
 def custom_openapi():
+    if app.openapi_schema:
+        return app.openapi_schema
     openapi_schema = get_openapi(
         title="Todo API",
-        version="3.0.0",
+        version=OPENAPI_VERSION,
         description="Awesome app that gets todos.",
         routes=app.routes
     )
