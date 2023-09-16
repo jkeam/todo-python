@@ -20,14 +20,11 @@ def todo(todo_id: int) -> dict:
     return {"data": res}
 
 def custom_openapi():
-    if app.openapi_schema:
-        return app.openapi_schema
     openapi_schema = get_openapi(
         title="Todo API",
         version="3.0.0",
-        summary="Gets todos",
         description="Awesome app that gets todos.",
-        routes=app.routes,
+        routes=app.routes
     )
     openapi_schema["info"]["x-logo"] = {
         "url": "https://png.pngtree.com/png-vector/20190930/ourmid/pngtree-to-do-list-icon-cartoon-style-png-image_1768114.jpg"
