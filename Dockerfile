@@ -14,7 +14,7 @@ COPY . ./
 ENV PORT 8080
 
 # Install production dependencies
-RUN python3.9 -m pip install --upgrade pip
+RUN python3 -m pip install --upgrade pip
 RUN pip install Flask gunicorn
 USER 1001
 
