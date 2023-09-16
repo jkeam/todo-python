@@ -15,7 +15,7 @@ ENV PORT 8080
 
 # Install production dependencies
 RUN python3 -m pip install --upgrade pip
-RUN pip install Flask gunicorn
+RUN pip install -r ./requirements.txt
 USER 1001
 
 # Run the web service on container startup. Here we use the gunicorn
