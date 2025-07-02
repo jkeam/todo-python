@@ -8,6 +8,7 @@ images:
   digest: sha256:acea9f04bc7599206248b4c5cbb9e684fc5c05cfcf77bcca668e489b10df647f
 
 resources:
+- namespace.yaml
 - deployment.yaml
 - service.yaml
 - route.yaml
