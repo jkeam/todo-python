@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: todo
+
+images:
+- name: IMAGE
+  newName: quay.io/jkeam/todo-python
+  digest: sha256:3c5b90768e232dec46341520e731bb480a25a6476c53ecc542ff23c0088c477f
+
+resources:
+- deployment.yaml
+- service.yaml
+- route.yaml

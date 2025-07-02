@@ -12,4 +12,4 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: todo-python
+    name: todo-python-service

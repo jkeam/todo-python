@@ -4,10 +4,11 @@ metadata:
   labels:
     app: todo-python
     app.kubernetes.io/component: backend
-    app.kubernetes.io/instance: todo-python-single
+    app.kubernetes.io/instance: todo-python
     app.kubernetes.io/name: todo-python
     app.kubernetes.io/part-of: todo
     app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: '3.12'
   annotations:
     app.openshift.io/vcs-uri: 'https://github.com/jkeam/todo-python.git'
     app.openshift.io/vcs-ref: 'main'
@@ -33,10 +34,10 @@ spec:
         resources:
           requests:
             memory: '128Mi'
-            cpu: '500m'
+            cpu: '250m'
           limits:
             memory: '512Mi'
-            cpu: '3000m'
+            cpu: '1000m'
         ports:
         - name: the-port
           containerPort: 8080

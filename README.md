@@ -2,25 +2,33 @@
 
 ## Prerequisite
 
-1. OpenShift with 3scale installed
-2. You must have cluster-admin access
+1. Python 3.12+
+2. `uv` for local development
 
-## Setup
+## Development
+
+```shell
+uv python pin 3.12
+uv sync
+uv run uvicorn app:app --host 0.0.0.0 --port 8080
+```
+
+## Deployment
 
 ### OpenShift
 
-Prepare for import
-
-    # deploy app
-    oc apply -f ./openshift
-
-    # give 3scale service account access to see openshift services
-    oc adm policy add-cluster-role-to-user view system:serviceaccount:3scale-project:amp
+```shell
+oc apply -k ./openshift
+```
 
 ### 3scale
 
-1. Import the product
+Optionally to use 3scale, follow the steps below.
 
-2. Create application plan, name it something like `Basic`
+1. `oc adm policy add-cluster-role-to-user view system:serviceaccount:3scale-project:amp`
 
-3. Create application and name it something like `Great Todo` and join the default `John Doe` user and application plan you just created together
+2. Import the product
+
+3. Create application plan, name it something like `Basic`
+
+4. Create application and name it something like `Great Todo` and join the default `John Doe` user and application plan you just created together
